@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  books:
+    image: 'books:latest'
+    ports:
+      - '8080:8080'
+    build:
+      context: .
+    container_name: books
+    depends_on:
+      - some-postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://some-postgres:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=mysecretpassword
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  some-postgres:
+    image: 'postgres'
+    ports:
+      - '5432:5432'
+    container_name: some-postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
