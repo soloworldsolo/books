@@ -1,0 +1,15 @@
+
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: mysql-configmap-books
+data:
+  database_url: jdbc:mariadb://db-mysql-books:3306/books?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC
+  database_user: "root"
+  database_password: "123456"
+
+
+
+
+
+

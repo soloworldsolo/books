@@ -1,0 +1,50 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: books
+  labels:
+    app: books
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: books
+  template:
+    metadata:
+      labels:
+        app: books
+    spec:
+      containers:
+        - name: books
+          image: soloworld/books:1.0
+          resources:
+            requests:
+              memory: "600Mi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9000
+          env:
+            - name: P_MYSQL_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap-books
+                  key: database_url
+            - name: P_MYSQL_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap-books
+                  key: database_user
+            - name: P_MYSQL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap-books
+                  key: database_password
+      volumes:
+        - name: mysql-persistence-storage
+          persistentVolumeClaim:
+            claimName: db-mysql-pvc-products

@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: ${P_MYSQL_URL}
+    username: ${P_MYSQL_USERNAME}
+    password: ${P_MYSQL_PASSWORD}
+    maximum-pool-size: 20
+
+
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDB106Dialect
+
+server:
+  port: 8080
+application:
+  name: books
+
+
+
+

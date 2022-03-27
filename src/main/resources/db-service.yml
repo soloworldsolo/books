@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-mysql-books
+  labels:
+    run: db-mysql-books
+spec:
+  ports:
+    - port: 3306
+      targetPort: 3306
+      protocol: TCP
+      nodePort: 30201
+  type: NodePort
+  selector:
+    app: db-mysql-books

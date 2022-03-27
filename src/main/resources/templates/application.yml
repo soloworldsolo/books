@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: ${database_url}
+    username: root
+    password: {database_password}
+    hikari:
+      initialization-fail-timeout: 0
+jpa:
+  database-platform: org.hibernate.dialect.MariaDB103Dialect
+  generate-ddl: true
+  show-sql: true
+  hibernate:
+    ddl-auto: create
