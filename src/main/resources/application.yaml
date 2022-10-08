@@ -13,7 +13,7 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MariaDB106Dialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
 
 server:
   port: 8080

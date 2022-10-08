@@ -12,15 +12,19 @@ import java.util.List;
 
 @RestController
 public class BookController {
-    @Autowired
     private IBookService bookService;
+
+    public BookController(IBookService bookService) {
+        this.bookService = bookService;
+    }
 
     @GetMapping("/books")
     public List<Book> getBooks() {
         return bookService.getBooks();
     }
+
     @PostMapping("/book")
     public Book book(@RequestBody Book book) {
-       return bookService.saveBook(book);
+        return bookService.saveBook(book);
     }
 }
