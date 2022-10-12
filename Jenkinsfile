@@ -16,6 +16,8 @@ stage("compile") {
     steps {
       echo "mvn clean install"
 
+      sh 'mvn install'
+
       }
 }
 }
