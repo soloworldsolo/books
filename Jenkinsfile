@@ -34,6 +34,15 @@ stage("compile") {
 
       }
 }
+
+stage('Build Docker Image') {
+
+    steps {
+       script {
+       sh 'docker build -t soloworld/books .'
+       }
+    }
+}
 }
 
 }
