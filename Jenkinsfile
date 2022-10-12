@@ -4,12 +4,18 @@ agent  any
 stages {
 
 stage ("checkout") {
-   echo "checking out from git hub"
-}
+    steps {
+    echo "checking out from git hub"
 
+    }
+
+}
 stage("compile") {
 
-   echo "maven clean install"
+    steps {
+      echo "mvn clean install"
+
+      }
 }
 }
 
