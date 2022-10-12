@@ -1,7 +1,21 @@
 pipeline {
 agent  any
 
+tools {
+        maven 'Maven 3.8.1'
+        jdk 'jdk17'
+    }
+
 stages {
+
+stage('Initialize'){
+ steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+}
 
 stage ("checkout") {
     steps {
@@ -16,7 +30,7 @@ stage("compile") {
     steps {
       echo "mvn clean install"
 
-      sh 'clean install'
+      sh 'mvn install'
 
       }
 }
