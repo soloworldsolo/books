@@ -1,9 +1,10 @@
-pipeline {
+cdpipeline {
 agent  any
 
 tools {
         maven 'maven'
         jdk 'java17'
+        docker 'docker-jenkins'
     }
 
 stages {
