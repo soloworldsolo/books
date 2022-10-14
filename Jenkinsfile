@@ -38,9 +38,8 @@ stage("compile") {
 stage('Build Docker Image') {
 
     steps {
-       script {
-       sh 'docker build -t soloworld/books .'
-       }
+      def image =docker.withRegistry("books" )
+      image.push();
     }
 }
 }
