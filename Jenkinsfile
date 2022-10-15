@@ -37,11 +37,13 @@ stage("compile") {
 stage('Build Docker Image') {
 
     steps {
-    script {
-    def image =docker.build("books")
-          image.push()
-    }
+     docker.withRegistry('https://registry.hub.docker.com', 'docker-jenkins') {
 
+            def customImage = docker.build("books:latest")
+
+            /* Push the container to the custom Registry */
+            customImage.push()
+        }
     }
 }
 
