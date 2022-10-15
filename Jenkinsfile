@@ -40,7 +40,7 @@ stage('Build Docker Image') {
     script {
     docker.withRegistry('https://registry.hub.docker.com', 'docker-jenkins') {
 
-                def customImage = docker.build("books:latest")
+                def customImage = docker.build("soloworld/books:latest")
 
                 /* Push the container to the custom Registry */
                 customImage.push()
