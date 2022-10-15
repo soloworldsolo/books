@@ -38,10 +38,13 @@ stage("compile") {
 stage('Build Docker Image') {
 
     steps {
-      def image =docker.withRegistry("books" )
-      image.push();
+    script {
+    def image =docker.build("books")
+          image.push()
     }
-}
+
+    }
 }
 
 }
+
