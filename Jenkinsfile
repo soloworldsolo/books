@@ -47,4 +47,4 @@ stage('Build Docker Image') {
 }
 
 }
-
+}
